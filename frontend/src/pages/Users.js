@@ -29,13 +29,15 @@ const Users = () => {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
     };
+    const [is_staff, setIsStaff] = useState(false);
+    const onCheckStaff = (e) => {setIsStaff(!is_staff)};
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         password: '',
         password2: ''
     })
-    const { name, email, password, password2, checked } = formData;
+    const { name, email, password, password2 } = formData;
     const onChange = e => setFormData({
         ...formData,
         [e.target.name]: e.target.value
@@ -43,7 +45,7 @@ const Users = () => {
     const onSave = async(e) => {
         e.preventDefault();
         const body = {
-            name, email, password, password2, staff
+            "name":name, "email":email,"password":password,"password2":password2,"is_staff":is_staff
         };
         if (password !== password2){
             setAlert('Passwords do not match.', 'warning');
@@ -203,7 +205,7 @@ const Users = () => {
                                         {update === user.id ?
                                         <input type="checkbox" className="custom-control-input" id={`defaultUnchecked${user.id}`} checked={staff} name="checked" onChange={onCheck}/>:
                                         <input type="checkbox" className="custom-control-input disabled" />}
-                                        <label class="custom-control-label" for={`defaultUnchecked`}>Is Staff?</label>
+                                        <label class="custom-control-label" for={`defaultUnchecked${user.id}`}>Is Staff?</label>
                                     </div>
                                 </td>
                                 :
@@ -268,7 +270,7 @@ const Users = () => {
                             {
                                 is_admin?
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" className="custom-control-input" id='defaultUnchecked' checked={staff} name="checked" onChange={onCheck}/>
+                                    <input type="checkbox" className="custom-control-input" id='defaultUnchecked' checked={is_staff} name="checked" onChange={onCheckStaff}/>
                                     <label class="custom-control-label" for="defaultUnchecked">Is Staff?</label>
                                 </div>
                                 :

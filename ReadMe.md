@@ -1,5 +1,32 @@
-This is Django React Boilerplate where authentication has been realized.
-I have used DjangoRestFramework and djangorestframework-simple-jwt to realize custom authentication 
-where users can log in by using their emails not username.
+This app is made of django-rest-framework and react.
+For authentication, it uses djangorestframework-simple-jwt.
+There are two types of users(staffs and ordinary users).
+They are all managed by admin.
+And admin/staff can manage users and admin can manage staffs.
+i.e Admin can create staff or user and staff can create only user.(CRUD)
 
-For front end, MdbReact is used for styling.
+And all kinds of users can manage the products and categories.
+
+How to run this application?
+git clone (this repository)
+For Backend
+1, cd backend
+2, pipenv install -r requirements.txt
+3, python manage.py migrate
+4, python manage.py runserver
+
+You can see the backend is running in http://localhost:8000
+For Frontend
+1, cd frontend
+2, npm install
+3, npm start
+You can see the frontend is running in http://localhost:3000
+
+You can login using the following credentials
+For admin
+email: admin@gmail.com
+password: password
+
+For staff
+
+
