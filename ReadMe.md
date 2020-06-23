@@ -28,5 +28,9 @@ email: admin@gmail.com
 password: password
 
 For staff
+email: chao@gmail.com
+password: password
+Once you signup with your credentials, you can log in and see the products and category.
+You can create/read/update/delete products and create new category.
 
 
